@@ -123,15 +123,15 @@ function refresh(isBtnRefresh) {
     domMessage.innerHTML = '';
     setTimeout(function () {
         console.log(myChart);
-        /*myChart.setOption({
+        myChart.setOption({
             dataZoom: {
                 show : true,
                 realtime: true,
                 start: 10,
                 end: 20
             }
-        });*/
-        myChart.refresh({
+        });
+        /*myChart.refresh({
             option: {
                 dataZoom: {
                     show : true,
@@ -140,7 +140,7 @@ function refresh(isBtnRefresh) {
                     end: '20'
                 }
             }
-        });
+        });*/
     }, 2000);
 }
 
@@ -154,7 +154,7 @@ function needMap() {
 }
 
 var echarts;
-var developMode = false;
+var developMode = true;
 
 if (developMode) {
     window.esl = null;
@@ -221,6 +221,7 @@ function launchExample() {
 
     // 按需加载
     isExampleLaunched = 1;
+
     require(
         [
             'echarts',

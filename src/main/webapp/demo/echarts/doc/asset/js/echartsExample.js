@@ -101,6 +101,23 @@ editor.setOption("theme", 'monokai');
 
 
 editor.on('change', function(){needRefresh = true;});
+document.onkeydown = function (e) {
+    var dataZoom = myChart.component.dataZoom;
+    console.log(dataZoom);
+    if (e.which == 37) {
+        dataZoom._startShape.ondrift(-1, 0);
+        dataZoom._startShape.drift(-1, 0);
+    }
+    if (e.which == 39) {
+        dataZoom._endShape.ondrift(1, 0);
+        dataZoom._endShape.drift(-1, 0);
+    }
+    if (e.which == 38) {
+        dataZoom._startFrameShape.ondrift(0, -1);
+        dataZoom._startFrameShape.drift(0, -1);
+    }
+    return false;
+};
 
 function refresh(isBtnRefresh){
     if (isBtnRefresh) {
@@ -117,6 +134,7 @@ function refresh(isBtnRefresh){
     (new Function(editor.doc.getValue()))();
     myChart.setOption(option, true)
     domMessage.innerHTML = '';
+
 }
 
 function needMap() {
@@ -129,7 +147,7 @@ function needMap() {
 }
 
 var echarts;
-var developMode = false;
+var developMode = true;
 
 if (developMode) {
     window.esl = null;

@@ -2,21 +2,15 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/demo/chart.js" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/demo/component" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/demo/component.js" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/demo/config.js" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/demo/data" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/demo/echarts" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/demo/echarts.js" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/demo/echarts/doc/asset" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/demo/echarts/doc/example" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/demo/echarts/src" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/demo/layer" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/demo/layout" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/demo/theme" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/demo/util" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/demo/zrender/src" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/helper/css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/helper/js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/helper/mix10.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/helper/theme" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/static/css/bootstrap-theme.css" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/static/css/bootstrap-theme.css.map" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/static/css/bootstrap.css" charset="GBK" />
@@ -26,6 +20,8 @@
     <file url="file://$PROJECT_DIR$/src/main/webapp/static/js/backbone.js" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/static/js/bootstrap.js" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/static/js/jquery.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/static/js/other/modelSelector.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/static/js/other/raphael.js" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/static/js/require.js" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/static/js/underscore.js" charset="GBK" />
   </component>

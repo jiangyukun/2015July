@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>index</title>
+		<link href="css/common.css" type="text/css" rel="stylesheet"/>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/thinking.js"></script>
+		<script src="js/drag.js"></script>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="nav">
+				<button class="add">添加</button><button class="delete">清除</button><button class="lin">链接</button>
+			</div>
+			<div class="content">
+				<div class="info_mod_sq box">
+					<div class="mod_sq_head"><input value="项目标题" class="editor_head" /></div>
+					<textarea class="mod_sq_content">中间内容部分文字略多...</textarea>
+					<div class="mod_sq_foot">
+						<a class="move bar">移动</a><a class="editor">编辑</a><a class="del">删除</a>
+					</div>
+				</div><!--//info_mod_sq-->
+				
+				<div class="arr_left"> </div><!--arr_left-->
+				
+				<div class="info_mod_sq box">
+					<div class="mod_sq_head"><input value="项目标题" class="editor_head" /></div>
+					<textarea class="mod_sq_content">中间内容部分文字略多...</textarea>
+					<div class="mod_sq_foot">
+						<a class="move bar">移动</a><a class="editor">编辑</a><a class="del">删除</a>
+					</div>
+				</div><!--//info_mod_sq-->
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+		// window.onload = function(){
+			// var oBox = document.getElementById("box");
+			// var oBar = document.getElementById("bar");
+			// startDrag(oBar, oBox);
+		// };
+		window.onload = function(){
+			var oBoxs = document.getElementsByClassName("box");
+			var oBars = document.getElementsByClassName("bar");
+            for (var i = 0; i < oBoxs.length; i++) {
+
+                startDrag(oBars[i], oBoxs[i]);
+            }
+		};
+</script>
+	</body>
+</html>

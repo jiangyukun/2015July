@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInternal="100">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%msg [%-5level %l]%n"/>
+        </Console>
+        <File name="File" fileName="D:/logs/2015July/warn.log" append="false">
+            <PatternLayout pattern="[ %d %-5level %l ]   %msg%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="warn">
+            <AppenderRef ref="File"/>
+        </Root>
+        <Logger name="me.jiangyu" level="trace" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="org.springframework" level="warn" additivity="false">
+            <AppenderRef ref="File"/>
+        </Logger>
+
+    </Loggers>
+</Configuration>

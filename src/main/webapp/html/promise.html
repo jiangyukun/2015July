@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../static/js/jquery.js"></script>
+</head>
+<body>
+<script>
+    function a() {
+        var defer = $.Deferred();
+        setTimeout(function () {
+            defer.resolve();
+        }, 1000);
+        return defer;
+    }
+    $.when(a()).done(function () {
+        console.log(1);
+    }).done(function () {
+        console.log(2);
+    });
+</script>
+</body>
+</html>

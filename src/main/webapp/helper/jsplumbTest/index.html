@@ -1,0 +1,301 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width">
+	<link rel="shortcut icon" href="/img/favicon.ico">
+	<script src="/js/jquery.min.js"></script>
+	<title>jsPlumb Toolkit</title>
+	<link href="//fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link href="/css/main.css" rel="stylesheet">
+	<link href="/css/gollum-template.css" rel="stylesheet">
+
+
+
+	<link rel="stylesheet" href="css/jsPlumbToolkit-defaults.css">
+	<link rel="stylesheet" href="css/jsPlumbToolkit-demo.css">
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-top navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+
+			<a class="navbar-brand" href="/"><img src="/img/logo-medium-jsplumb.png"></a>
+
+		</div>
+
+		<div class="navbar-collapse collapse nav-wrapper">
+			<ul class="nav navbar-nav">
+				<li><a href="/demos.html">DEMOS</a></li>
+				<li><a href="/docs.html">DOCS</a></li>
+				<li><a href="/features">FEATURES</a></li>
+				<li><a href="/download">DOWNLOAD</a></li>
+				<li><a href="/contact.html">CONTACT</a></li>
+				<li><a href="https://blog.jsplumbtoolkit.com">BLOG</a></li>
+
+			</ul>
+
+			<div class="apidoc-jsplumb-logo"><div class="container"><img src="/img/logo-docs-jsplumb.png"></div></div>
+
+			<div class="social-nav hidden-xs">
+				<!--a href="#" class="link"><span class="icon-facebook"></span></a-->
+				<a href="http://twitter.com/jsplumblib" class="link"><span class="icon-twitter"></span></a>
+				<a href="http://github.com/sporritt/jsplumb/" class="link"><span class="icon-github"></span></a>
+				<a href="http://www.linkedin.com/company/jsplumb" class="link"><span class="icon-linkedin"></span></a>
+
+			</div>
+		</div><!--/.nav-collapse -->
+	</div>
+</div>
+
+
+<div class="breadcrumbs">
+	<div class="crumbs">
+		<a href="/demos.html">DEMOS</a>
+		&nbsp; &rarr; &nbsp;
+		<a href="/demos.html#Toolkit">Toolkit </a>
+		&nbsp; &rarr; &nbsp; Flowchart Builder
+	</div>
+
+	<div class="demo-nav">
+		<a class="demo-prev" href="/demos/toolkit/database-visualizer/index.html">Database Visualizer</a>
+		&nbsp; &larr; &nbsp;
+		&nbsp; &rarr; &nbsp;
+		<a class="demo-next" href="/demos/toolkit/hierarchy/index.html">Hierarchy Layout</a>
+	</div>
+</div>
+
+
+
+<!-- content -->
+<div id="main">
+
+	<!-- the node palette -->
+	<div id="nodePalette" class="sidebar">
+		<ul>
+			<li jtk-node-type="question" title="Drag to add new">
+				<i class="icon-tablet"></i>Question
+			</li>
+			<li jtk-node-type="action" title="Drag to add new">
+				<i class="icon-eye-open"></i>Action
+			</li>
+			<li jtk-node-type="output" title="Drag to add new">
+				<i class="icon-eye-open"></i>Output
+			</li>
+		</ul>
+	</div>
+
+	<!-- this is the main drawing area -->
+	<div id="canvas" class="canvas">
+		<!-- controls -->
+		<div class="controls">
+			<i class="fa fa-arrows selected-mode" mode="pan" title="Pan Mode"></i>
+			<i class="fa fa-pencil" mode="select" title="Select Mode"></i>
+			<i class="fa fa-home" reset title="Zoom To Fit"></i>
+		</div>
+		<!-- miniview -->
+		<div id="miniview" class="miniview"></div>
+	</div>
+
+	<div class="description">
+		<p>
+			This sample application is a builder for flowcharts. Questions, actions and outputs are supported.
+		</p>
+		<ul>
+			<li>Drag new nodes from the palette on the left onto the workspace to add nodes</li>
+			<li>Drag from the grey border of any node to any other node to establish a link, then provide a description for the link's label</li>
+			<li>Click a link to edit its label.</li>
+			<li>Click the 'Pencil' icon to enter 'select' mode, then select several nodes. Click the canvas to exit.</li>
+			<li>Click the 'Home' icon to zoom out and see all the nodes.</li>
+		</ul>
+	</div>
+
+
+	<!-- the current dataset -->
+	<div id="dataset"></div>
+</div>
+
+<script type="jtk" id="tmplStart">
+            <div style="left:${left}px;top:${top}px;width:${w}px;height:${h}px;" class="flowchart-object flowchart-start">
+                <div style="position:relative">
+                    <svg:svg width="${w}" height="${h}">
+                        <svg:ellipse cx="${w/2}" cy="${h/2}" rx="${w/2}" ry="${h/2}" class="outer"/>
+                        <svg:ellipse cx="${w/2}" cy="${h/2}" rx="${(w/2) - 10}" ry="${(h/2) - 10}" class="inner"/>
+                        <svg:text text-anchor="middle" x="${ w / 2 }" y="${ h / 2 }" dominant-baseline="central">${text}</svg:text>
+                    </svg:svg>
+                </div>
+                <jtk-source port-type="start" filter=".outer" filter-negate="true"/>
+            </div>
+        </script>
+
+<script type="jtk" id="tmplAction">
+            <div style="left:${left}px;top:${top}px;width:${w}px;height:${h}px;" class="flowchart-object flowchart-action">
+                <div style="position:relative">
+                    <div class="node-edit node-action">
+                        <i class="fa fa-pencil-square-o"/>
+                    </div>
+                    <div class="node-delete node-action">
+                        <i class="fa fa-times"/>
+                    </div>
+                    <svg:svg width="${w}" height="${h}">
+                        <svg:rect x="0" y="0" width="${w}" height="${h}" class="outer"/>
+                        <svg:rect x="10" y="10" width="${w-20}" height="${h-20}" class="inner"/>
+                        <svg:text text-anchor="middle" x="${w/2}" y="${h/2}" dominant-baseline="central">${text}</svg:text>
+                    </svg:svg>
+                </div>
+                <jtk-target port-type="target"/>
+                <jtk-source port-type="source" filter=".outer"/>
+            </div>
+        </script>
+
+<script type="jtk" id="tmplQuestion">
+            <div style="left:${left}px;top:${top}px;width:${w}px;height:${h}px;" class="flowchart-object flowchart-question">
+                <div style="position:relative">
+                    <div class="node-edit node-action">
+                        <i class="fa fa-pencil-square-o"/>
+                    </div>
+                    <div class="node-delete node-action">
+                        <i class="fa fa-times"/>
+                    </div>
+                    <svg:svg width="${w}" height="${h}">
+                        <svg:path d="M ${w/2} 0 L ${w} ${h/2} L ${w/2} ${h} L 0 ${h/2} Z" class="outer"/>
+                        <svg:path d="M ${w/2} 10 L ${w-10} ${h/2} L ${w/2} ${h-10} L 10 ${h/2} Z" class="inner"/>
+                        <svg:text text-anchor="middle" x="${w/2}" y="${h/2}" dominant-baseline="central">${text}</svg:text>
+                    </svg:svg>
+                </div>
+                <jtk-source port-type="source" filter=".outer"/>
+                <jtk-target port-type="target"/>
+            </div>
+        </script>
+
+<script type="jtk" id="tmplOutput">
+            <div style="left:${left}px;top:${top}px;width:${w}px;height:${h}px;" class="flowchart-object flowchart-output">
+                <div style="position:relative">
+                    <div class="node-edit node-action">
+                        <i class="fa fa-pencil-square-o"/>
+                    </div>
+                    <div class="node-delete node-action">
+                        <i class="fa fa-times"/>
+                    </div>
+                    <svg:svg width="${w}" height="${h}">
+                        <svg:rect x="0" y="0" width="${w}" height="${h}"/>
+                        <svg:text text-anchor="middle" x="${w/2}" y="${h/2}" dominant-baseline="central">${text}</svg:text>
+                    </svg:svg>
+                </div>
+                <jtk-target port-type="target"/>
+            </div>
+        </script>
+
+<!-- edit text (question or action or output or edge label) -->
+<script type="jtk" class="dlg" id="dlgText" title="Enter Text">
+            <input type="text" size="50" jtk-focus jtk-att="text" value="${text}" jtk-commit="true"/>
+        </script>
+
+<script type="jtk" class="dlg" id="dlgConfirm" title="Please Confirm">
+            ${msg}?
+        </script>
+
+<script type="jtk" class="dlg" id="dlgMessage" title="Message" cancel="false">
+            ${msg}
+        </script>
+
+<!-- /content -->
+
+
+<div class="clear-footer"></div>
+<div class="full-width-container background-dark-green footer-wrapper">
+	<div class="container footer">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-6">
+
+				<div class="pull-left">
+					<img src="/img/logo-jsplumb-green.png" >
+				</div>
+
+				<div class="pull-left">
+					<ul class="navbar-footer">
+						<li><a href="/demos.html">DEMOS</a></li>
+						<li><a href="/docs.html">DOCS</a></li>
+						<li><a href="/features">FEATURES</a></li>
+						<li><a href="/download">DOWNLOAD</a></li>
+						<li><a href="/contact.html">CONTACT</a></li>
+						<li><a href="https://blog.jsplumbtoolkit.com">BLOG</a></li>
+
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+
+				<div class="visible-xs social-nav">
+					<!--a href="#" class="link"><span class="icon-facebook"></span></a-->
+					<a href="http://twitter.com/jsplumblib" class="link"><span class="icon-twitter"></span></a>
+					<a href="http://github.com/sporritt/jsplumb/" class="link"><span class="icon-github"></span></a>
+					<a href="http://www.linkedin.com/company/jsplumb" class="link"><span class="icon-linkedin"></span></a>
+
+				</div>
+
+				<div class="clearfix"></div>
+
+				<div class="copyright divider-10">
+					© 2015 jsPlumb, Inc. All rights reserved. &nbsp;&nbsp;
+					ABN : 31 646 922 756&nbsp;&nbsp;
+					<a href="/license">license</a>&nbsp;&nbsp;&nbsp;
+					<a href="privacy">privacy policy</a>&nbsp;&nbsp;&nbsp;
+					<a href="/contact.html">contact</a>&nbsp;&nbsp;&nbsp;
+					<a href="/roadmap.html">roadmap</a>
+				</div>
+
+			</div>
+
+			<div class="col-xs-12 col-sm-6 col-md-6">
+
+				<div class=" hidden-xs social-nav">
+					<!--a href="#" class="link"><span class="icon-facebook"></span></a-->
+					<a href="http://twitter.com/jsplumblib" class="link"><span class="icon-twitter"></span></a>
+					<a href="http://github.com/sporritt/jsplumb/" class="link"><span class="icon-github"></span></a>
+					<a href="http://www.linkedin.com/company/jsplumb" class="link"><span class="icon-linkedin"></span></a>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script src="lib/dom.jsPlumb-1.7.6.js"></script>
+<script src="lib/jsPlumbToolkit-1.0.0.js"></script>
+<script src="lib/demo-support.js"></script>
+<script src="app.js"></script>
+
+<script src="/js/jquery.validate.js"></script>
+<script src="/js/additional-methods.js"></script>
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-49979015-1', 'auto');
+	ga('send', 'pageview');
+
+</script>
+
+
+</body>
+
+</html>

@@ -3,7 +3,7 @@
     touch-action:none;
 }
 
-.flowchart-demo .window {
+/*.flowchart-demo .window {
     border: 1px solid #346789;
     box-shadow: 2px 2px 19px #aaa;
     -o-box-shadow: 2px 2px 19px #aaa;
@@ -29,7 +29,7 @@
     -moz-transition: -moz-box-shadow 0.15s ease-in;
     -o-transition: -o-box-shadow 0.15s ease-in;
     transition: box-shadow 0.15s ease-in;
-}
+}*/
 
 .flowchart-demo .window:hover {
     box-shadow: 2px 2px 19px #444;
@@ -95,9 +95,9 @@
     border: 1px solid white;
 }
 
-.window._jsPlumb_connected {
+/*.window._jsPlumb_connected {
     border: 2px solid green;
-}
+}*/
 
 .jsplumb-drag {
     border: 4px solid pink !important;

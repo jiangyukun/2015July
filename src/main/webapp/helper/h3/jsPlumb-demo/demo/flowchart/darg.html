@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+    <head>
+        <title>jsPlumb demo - no library</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <link href="font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/jsPlumbToolkit-defaults.css">
+        <link rel="stylesheet" href="../../css/main.css">
+        <link rel="stylesheet" href="../../css/jsPlumbToolkit-demo.css">
+        <link rel="stylesheet" href="demo.css">
+        <link href="css/common.css" type="text/css" rel="stylesheet"/>
+        <link rel="stylesheet" href="css/jquery-ui-1.10.4.css">
+        <script src="js/jquery-1.10.2.js"></script>
+		<script src="js/jquery-ui-1.10.4.js"></script>
+		<script src="js/thinking.js"></script>
+		<script type="text/javascript">
+		  $(function() {
+		    $( ".draggable" ).draggable({ scroll: true });    //设置控件可滚动
+			//设置控件可滚动，滚动灵敏度设置为100
+		    $( ".draggable-info" ).draggable({ scroll: true, scrollSensitivity: 100 });
+		    //jQuery动态添加后解决点击事件
+		    $(document).on('click', '.del', function(e) {
+ 					$(this).parents("div.mod").detach();
+				});
+			//清除
+			$(document).on('click', '.delete', function(i) {
+ 					$("div.content").children().detach();
+				});
+				
+		  });
+		</script>
+    </head>
+    <body >
+    	
+    	<div class="nav" style="margin:0 auto;text-align:center;">
+				<button class="add">添加项目框</button><button class="add—info">添加文字说明</button><button class="delete">清除所有</button>
+			</div>
+        <div id="main" data-demo-id="flowchart">
+			<!-- demo -->
+			<div class="canvas canvas-wide flowchart-demo jtk-surface jtk-surface-nopan content" id="canvas">
+				
+				<div class="draggable">
+					<div class="mod window">
+					<div class="mod_head"><i class="del"></i><input value="项目标题新建" class="editor_head" /></div>
+					<textarea class="mod_content">中间内容部分文字略多...</textarea>
+				</div><!--//info_mod_sq-->
+				</div>
+				
+				<div class="draggable-info ui-widget-content">
+					<input type="text" value="scrollSensitivity滚动灵敏度设置为100" />
+				</div>
+
+                <div class="window jtk-node mod" id="flowchartWindow1">
+					<div class="mod_head"><i class="del"></i><input value="项目标题1" class="editor_head" /></div>
+					<textarea class="mod_content">中间内容部分文字略多...</textarea>
+				<!--//info_mod_sq-->
+                </div>
+                <div class="window jtk-node mod" id="flowchartWindow2">
+					<div class="mod_head"><i class="del"></i><input value="项目标题2" class="editor_head" /></div>
+					<textarea class="mod_content">中间内容部分文字略多...</textarea>
+				</div><!--//info_mod_sq-->
+                <div class="window jtk-node mod" id="flowchartWindow3">
+					<div class="mod_head"><i class="del"></i><input value="项目标题3" class="editor_head" /></div>
+					<textarea class="mod_content">中间内容部分文字略多...</textarea><!--//info_mod_sq-->
+                </div>
+                <div class="window jtk-node mod" id="flowchartWindow4">
+					<div class="mod_head"><i class="del"></i><input value="项目标题4" class="editor_head" /></div>
+					<textarea class="mod_content">中间内容部分文字略多...</textarea><!--//info_mod_sq-->
+                </div>
+            </div>
+            
+            <!-- /demo -->
+        </div>
+        <!-- JS -->
+        <!-- support lib for bezier stuff -->
+        <script src="../../lib/jsBezier-0.7.js"></script>
+        <!-- event adapter 事件适配器-->
+		<script src="../../lib/mottle-0.6.js"></script>
+		<!-- geometry functions -->
+        <script src="../../lib/biltong-0.2.js"></script>
+		<!-- drag -->
+        <script src="../../lib/katavorio-0.7.js"></script>
+        <!-- jsplumb util -->
+        <script src="../../src/util.js"></script>
+        <script src="../../src/browser-util.js"></script>
+        <!-- main jsplumb engine -->
+        <script src="../../src/jsPlumb.js"></script>
+        <!-- base DOM adapter -->
+        <script src="../../src/dom-adapter.js"></script>
+        <script src="../../src/overlay-component.js"></script>
+        <!-- endpoint -->
+        <script src="../../src/endpoint.js"></script>
+        <!-- connection -->
+        <script src="../../src/connection.js"></script>
+        <!-- anchors -->
+        <script src="../../src/anchors.js"></script>
+        <!-- connectors, endpoint and overlays 连接器，终端和覆盖 -->
+        <script src="../../src/defaults.js"></script>
+        <!-- flowchart connectors 流程图连接器 -->
+        <script src="../../src/connectors-flowchart.js"></script>
+        <!-- SVG renderer SVG渲染-->
+        <script src="../../src/renderers-svg.js"></script>
+
+
+        <!-- vml renderer -->
+        <script src="../../src/renderers-vml.js"></script>
+
+        <!-- no library jsPlumb adapter -->
+        <script src="../../src/base-library-adapter.js"></script>
+        <script src="../../src/dom.jsPlumb.js"></script>
+        <!-- /JS -->
+
+        <!--  demo code -->
+        <script src="demo.js"></script>
+
+		 
+    </body>
+</html>

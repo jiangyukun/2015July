@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+    <head>
+        <title>jsPlumb demo - no library</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <link href="font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/jsPlumbToolkit-defaults.css">
+        <link rel="stylesheet" href="../../css/main.css">
+        <link rel="stylesheet" href="../../css/jsPlumbToolkit-demo.css">
+        <link rel="stylesheet" href="demo.css">
+        <link href="css/common.css" type="text/css" rel="stylesheet"/>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/thinking.js"></script>
+
+    </head>
+    <body >
+    	
+    	<div class="nav">
+				<button class="add">添加</button><button class="delete">清除</button><button class="lin">链接</button>
+			</div>
+        <div id="main" data-demo-id="flowchart">
+			<!-- demo -->
+			<div class="canvas canvas-wide flowchart-demo jtk-surface jtk-surface-nopan content" id="canvas">
+				<div class="move" style="width: 120px;height:120px;background:#333;"></div>
+                <div class="window jtk-node mod" id="flowchartWindow1">
+					<div class="mod_head"><i class="del"></i><input value="项目标题1" class="editor_head" /></div>
+					<textarea class="mod_content">中间内容部分文字略多...</textarea>
+				<!--//info_mod_sq-->
+                </div>
+                <div class="window jtk-node mod" id="flowchartWindow2">
+					<div class="mod_head"><i class="del"></i><input value="项目标题2" class="editor_head" /></div>
+					<textarea class="mod_content">中间内容部分文字略多...</textarea>
+				</div><!--//info_mod_sq-->
+                <div class="window jtk-node mod" id="flowchartWindow3">
+					<div class="mod_head"><i class="del"></i><input value="项目标题3" class="editor_head" /></div>
+					<textarea class="mod_content">中间内容部分文字略多...</textarea><!--//info_mod_sq-->
+                </div>
+                <div class="window jtk-node mod" id="flowchartWindow4">
+					<div class="mod_head"><i class="del"></i><input value="项目标题4" class="editor_head" /></div>
+					<textarea class="mod_content">中间内容部分文字略多...</textarea><!--//info_mod_sq-->
+                </div>
+            </div>
+            
+            <!-- /demo -->
+        </div>
+        <!-- JS -->
+        <!-- support lib for bezier stuff -->
+        <script src="../../lib/jsBezier-0.7.js"></script>
+        <!-- event adapter 事件适配器-->
+		<script src="../../lib/mottle-0.6.js"></script>
+		<!-- geometry functions -->
+        <script src="../../lib/biltong-0.2.js"></script>
+		<!-- drag -->
+        <script src="../../lib/katavorio-0.7.js"></script>
+        <!-- jsplumb util -->
+        <script src="../../src/util.js"></script>
+        <script src="../../src/browser-util.js"></script>
+        <!-- main jsplumb engine -->
+        <script src="../../src/jsPlumb.js"></script>
+        <!-- base DOM adapter -->
+        <script src="../../src/dom-adapter.js"></script>
+        <script src="../../src/overlay-component.js"></script>
+        <!-- endpoint -->
+        <script src="../../src/endpoint.js"></script>
+        <!-- connection -->
+        <script src="../../src/connection.js"></script>
+        <!-- anchors -->
+        <script src="../../src/anchors.js"></script>
+        <!-- connectors, endpoint and overlays 连接器，终端和覆盖 -->
+        <script src="../../src/defaults.js"></script>
+        <!-- flowchart connectors 流程图连接器 -->
+        <script src="../../src/connectors-flowchart.js"></script>
+        <!-- SVG renderer SVG渲染-->
+        <script src="../../src/renderers-svg.js"></script>
+
+
+        <!-- vml renderer -->
+        <script src="../../src/renderers-vml.js"></script>
+
+        <!-- no library jsPlumb adapter -->
+        <script src="../../src/base-library-adapter.js"></script>
+        <script src="../../src/dom.jsPlumb.js"></script>
+        <!-- /JS -->
+
+        <!--  demo code -->
+        <script src="demo.js"></script>
+
+
+    </body>
+</html>

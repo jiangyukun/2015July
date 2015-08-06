@@ -20,9 +20,7 @@
             //设置控件可滚动，滚动灵敏度设置为100
             $(".draggable-info").draggable({scroll: true, scrollSensitivity: 100});
             //jQuery动态添加后解决点击事件
-            $(document).on('click', '.del', function (e) {
-                $(this).parents("div.mod").detach();
-            });
+
             //清除
             $(document).on('click', '.delete', function (i) {
                 $("div.content").children().detach();

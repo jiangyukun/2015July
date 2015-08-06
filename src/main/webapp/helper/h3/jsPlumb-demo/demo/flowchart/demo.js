@@ -84,9 +84,11 @@ jsPlumb.ready(function () {
             connection.getOverlay("label").setLabel(connection.sourceId.substring(15) + "-" + connection.targetId.substring(15));
         };
 
+    var xid;
     var _addEndpoints = function (toId, sourceAnchors, targetAnchors) {
         for (var i = 0; i < sourceAnchors.length; i++) {
             var sourceUUID = toId + sourceAnchors[i];
+            //xid = sourceUUID;
             instance.addEndpoint("flowchart" + toId, sourceEndpoint, {
                 anchor: sourceAnchors[i], uuid: sourceUUID
             });
@@ -155,7 +157,7 @@ jsPlumb.ready(function () {
         var editor_head = $('<input>').val('项目标题' + index);
         editor_head.attr('class', 'editor_head');
         editor_head.appendTo(mod_head);
-        var editor_head = $('<i></i>');
+        editor_head = $('<i></i>');
         editor_head.attr('class', 'del');
         editor_head.appendTo(mod_head);
         var mod_content = $('<textarea></textarea>');
@@ -175,6 +177,12 @@ jsPlumb.ready(function () {
         }
 
         index++;
+    });
+
+    $(document).on('click', '.del', function (e) {
+        $(this).parents("div.mod").detach();
+        console.log(instance);
+        instance.deleteEndpoint(xid);
     });
 
 });
